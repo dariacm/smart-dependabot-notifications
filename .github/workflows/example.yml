@@ -1,0 +1,20 @@
+name: Smart Dependabot Notifications Example
+
+on:
+  workflow_run:
+    workflows: ['CI', 'Tests']  # Replace with your actual workflow names
+    types:
+      - completed
+
+jobs:
+  notify-on-failure:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Add reviewers on failure
+        uses: smart-dependabot-notifications@v1
+        with:
+          reviewers: 'daria,carlotta'  # Replace with your GitHub usernames (optional)
+          team-reviewers: 'backend-team'  # Replace with your team slugs (optional)
