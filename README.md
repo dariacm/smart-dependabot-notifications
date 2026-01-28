@@ -32,7 +32,7 @@ jobs:
       actions: read
     steps:
       - name: Add reviewers on failure
-        uses: smart-dependabot-notifications@v1
+        uses: dariacm/smart-dependabot-notifications@v1
         with:
           github-token: ${{ github.token }}
           reviewers: 'daria,carlotta'
@@ -58,7 +58,7 @@ jobs:
       actions: read
     steps:
       - name: Add reviewers on failure
-        uses: Personal/smart-dependabot-notifications@v1
+        uses: dariacm/smart-dependabot-notifications@v1
         with:
           github-token: ${{ github.token }}
           reviewers: 'daria,carlotta'
@@ -74,6 +74,13 @@ jobs:
 | `reviewers` | Comma-separated list of GitHub usernames | No | - |
 | `team-reviewers` | Comma-separated list of GitHub team slugs | No | - |
 | `comment` | Custom comment to post on PR when checks fail | No | `dependabot was not able to automerge this pull request. Humans, please help 🤖` |
+
+## Outputs
+
+| Output | Description |
+|--------|-------------|
+| `pull-request-number` | The number of the pull request that was processed |
+| `reviewers-added` | The total number of reviewers (users + teams) that were added |
 
 ## How It Works
 
