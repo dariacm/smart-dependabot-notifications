@@ -3,15 +3,10 @@ import * as github from '@actions/github'
 
 async function run() {
   try {
-    const token = core.getInput('github-token') || process.env.GITHUB_TOKEN
+    const token = core.getInput('github-token', { required: true })
     const reviewersInput = core.getInput('reviewers') || ''
     const teamReviewersInput = core.getInput('team-reviewers') || ''
     const customComment = core.getInput('comment')
-
-    if (!token) {
-      core.setFailed('GitHub token is required. Provide github-token input or ensure GITHUB_TOKEN is available.')
-      return
-    }
 
     const octokit = github.getOctokit(token)
     const context = github.context

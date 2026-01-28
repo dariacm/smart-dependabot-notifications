@@ -34,6 +34,7 @@ jobs:
       - name: Add reviewers on failure
         uses: smart-dependabot-notifications@v1
         with:
+          github-token: ${{ github.token }}
           reviewers: 'daria,carlotta'
           team-reviewers: 'backend-team,data-team'
 ```
@@ -59,9 +60,9 @@ jobs:
       - name: Add reviewers on failure
         uses: Personal/smart-dependabot-notifications@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           reviewers: 'daria,carlotta'
-          team-reviewers: 'backend-team, data-team'
+          team-reviewers: 'backend-team,data-team'
           comment: '🚨 Dependabot PR failed checks. Please review!'
 ```
 
@@ -69,7 +70,7 @@ jobs:
 
 | Input | Description | Required | Default |
 |-------|-------------|----------|---------|
-| `github-token` | GitHub token with `pull-requests:write` permission | No | `${{ github.token }}` |
+| `github-token` | GitHub token with `pull-requests:write` permission. Pass `${{ github.token }}` to use the default GitHub Actions token. | Yes | - |
 | `reviewers` | Comma-separated list of GitHub usernames | No | - |
 | `team-reviewers` | Comma-separated list of GitHub team slugs | No | - |
 | `comment` | Custom comment to post on PR when checks fail | No | `dependabot was not able to automerge this pull request. Humans, please help 🤖` |
